@@ -1,46 +1,18 @@
-import blogLogo from '../../assets/Logo.svg'
+import { Header } from "../../components/Header/Header"
+import { Repositorys } from "../../components/Repositorys/Repositorys";
+import { SearchForm } from "../../components/SearchForm/SearchForm";
+import { UserSummary } from "../../components/UserSummary/UserSummary";
+
 
 export function Profile(){
     return(
         <>
-            <header>
-                <img src={blogLogo} alt="Logo" />
-            </header>
+            <Header />
             <main>
-                <section>
-                    <img src="" alt="" />
-                    <div>
-                        <span>
-                            <h1>Thomas dixini</h1>
-                            <a href="#"> Github </a>
-                        </span>
-                        <p> sajifasjifisajjfisajifsaji </p>
-                        <footer>
-                            <a href="#"> link:github</a>
-                            <a href="#"> link:instagram </a>
-                            <a href="#"> link:facebook </a>
-                        </footer>
-                    </div>
-                </section>
-                <form action="">
-                    <div>
-                        <label htmlFor="searchForm"> Publicações </label>
-                        <span> 6 publicações </span>
-                    </div>
-                    <input type="text" />
-                </form>
+                <UserSummary />
+                <SearchForm />
 
-                <article>
-                    <header>
-                        <strong> Titulo </strong>
-                        <span> Há 1 dia </span>
-                    </header>
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, possimus nisi. Sequi, 
-                        laudantium cum ex adipisci sed quod voluptatibus repudiandae quasi deleniti aliquid 
-                        laborum dolore, molestiae nobis! Impedit, laboriosam quis?
-                    </p>
-                </article>
+                <Repositorys />
             </main>
         </>
     );
