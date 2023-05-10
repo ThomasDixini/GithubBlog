@@ -1,9 +1,13 @@
+import blogLogo from '../../assets/Logo.svg'
+
 export function Profile(){
     return(
         <>
-            <header></header>
+            <header>
+                <img src={blogLogo} alt="Logo" />
+            </header>
             <main>
-                <div>
+                <section>
                     <img src="" alt="" />
                     <div>
                         <span>
@@ -17,7 +21,7 @@ export function Profile(){
                             <a href="#"> link:facebook </a>
                         </footer>
                     </div>
-                </div>
+                </section>
                 <form action="">
                     <div>
                         <label htmlFor="searchForm"> Publicações </label>
