@@ -5,6 +5,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 position: relative;
+z-index: -9999;
 overflow: hidden;
 width: 100%;
 height: 300px;

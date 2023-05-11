@@ -1,19 +1,36 @@
+import { GithubLogo, Buildings, Users, ArrowSquareOut } from "phosphor-react";
+import { SectionContainer } from "./styles";
+
 export function UserSummary(){
     return(
-        <section>
-            <img src="" alt="" />
+        <SectionContainer>
+            <img src="https://github.com/ThomasDixini.png" alt="" />
             <div>
                 <span>
                     <h1>Thomas dixini</h1>
-                    <a href="#"> Github </a>
+                    <a href="#"> 
+                        Github 
+                        <ArrowSquareOut size={20} color="#3294f8" weight="bold"/>
+                    </a>
                 </span>
-                <p> sajifasjifisajjfisajifsaji </p>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda ab illum consectetur 
+                    dignissimos accusamus ea quis fugiat beatae est 
+                    voluptas vero cumque, dolore voluptatum facilis totam nihil consequuntur explicabo! </p>
                 <footer>
-                    <a href="#"> link:github</a>
-                    <a href="#"> link:instagram </a>
-                    <a href="#"> link:facebook </a>
+                    <a href="#">
+                        <GithubLogo size={24}/>
+                        thomasdixini
+                    </a>
+                    <a href="#"> 
+                        <Buildings size={24}/>
+                        instagram 
+                    </a>
+                    <a href="#"> 
+                        <Users size={24}/>
+                        facebook 
+                    </a>
                 </footer>
             </div>
-        </section>
+        </SectionContainer>
     );
 }
