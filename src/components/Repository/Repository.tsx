@@ -1,8 +1,10 @@
-export function Repositorys(){
+import { ArticleContainer } from "./styled";
+
+export function Repository(){
     return(
-        <article>
+        <ArticleContainer>
             <header>
-                <strong> Titulo </strong>
+                <strong> JavaScript data types and data structures </strong>
                 <span> Há 1 dia </span>
             </header>
             <p>
@@ -10,6 +12,6 @@ export function Repositorys(){
                 laudantium cum ex adipisci sed quod voluptatibus repudiandae quasi deleniti aliquid 
                 laborum dolore, molestiae nobis! Impedit, laboriosam quis?
             </p>
-        </article>
+        </ArticleContainer>
     );
 }

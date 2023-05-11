@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header/Header"
-import { Repositorys } from "../../components/Repositorys/Repositorys";
+import { Repository } from "../../components/Repository/Repository";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { UserSummary } from "../../components/UserSummary/UserSummary";
 import { MainContainer } from "./styles";
@@ -13,7 +13,12 @@ export function Profile(){
                 <UserSummary />
                 <SearchForm />
 
-                <Repositorys />
+                <section className="repositorySection">
+                    <Repository />
+                    <Repository />
+                    <Repository />
+                    <Repository />
+                </section>
             </MainContainer>
         </>
     );
