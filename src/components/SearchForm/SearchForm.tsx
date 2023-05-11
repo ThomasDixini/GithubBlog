@@ -1,11 +1,13 @@
+import { FormContainer } from "./styles";
+
 export function SearchForm(){
     return(
-        <form action="">
+        <FormContainer action="">
             <div>
                 <label htmlFor="searchForm"> Publicações </label>
                 <span> 6 publicações </span>
             </div>
-            <input type="text" />
-        </form>
+            <input type="text" placeholder="Buscar conteúdo"/>
+        </FormContainer>
     );
 }
