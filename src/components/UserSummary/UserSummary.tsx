@@ -1,33 +1,67 @@
 import { GithubLogo, Buildings, Users, ArrowSquareOut } from "phosphor-react";
 import { SectionContainer } from "./styles";
+import { api } from "../../api/api";
+import { useEffect, useState } from "react";
+
+interface UserDataType {
+    avatar_url: string;
+    bio: string;
+    html_url: string;
+    followers: number;
+    login: string;
+    name: string;
+    company: string;
+}
 
 export function UserSummary(){
+
+    const [ user, setUser ] = useState<UserDataType>({} as UserDataType);
+
+    async function  loadUserData() {
+        const response = await api.get('')
+        const { avatar_url, bio, html_url, followers, login, name, company  } = await response.data;
+
+        setUser({
+            avatar_url,
+            bio,
+            html_url,
+            followers,
+            login,
+            name,
+            company
+        })
+    }
+
+    useEffect(() => {
+        loadUserData();
+    }, [])
+    
     return(
         <SectionContainer>
-            <img src="https://github.com/ThomasDixini.png" alt="" />
+            <img src={user.avatar_url} alt="" />
             <div>
                 <span>
-                    <h1>Thomas dixini</h1>
-                    <a href="#"> 
+                    <h1>{user.name}</h1>
+                    <a href={user.html_url}> 
                         Github 
                         <ArrowSquareOut size={20} color="#3294f8" weight="bold"/>
                     </a>
                 </span>
-                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda ab illum consectetur 
-                    dignissimos accusamus ea quis fugiat beatae est 
-                    voluptas vero cumque, dolore voluptatum facilis totam nihil consequuntur explicabo! </p>
+                <p> {user.bio} </p>
                 <footer>
-                    <a href="#">
+                    <a href={user.html_url}>
                         <GithubLogo size={24}/>
-                        thomasdixini
+                        {user.login}
                     </a>
-                    <a href="#"> 
-                        <Buildings size={24}/>
-                        instagram 
-                    </a>
+                    { user.company && (
+                        <a href="">
+                            <Buildings size={24} />
+                            {user.company}
+                        </a>
+                    )}
                     <a href="#"> 
                         <Users size={24}/>
-                        facebook 
+                        {user.followers} Seguidores
                     </a>
                 </footer>
             </div>
