@@ -18,7 +18,7 @@ export function UserSummary(){
     const [ user, setUser ] = useState<UserDataType>({} as UserDataType);
 
     async function  loadUserData() {
-        const response = await api.get('')
+        const response = await api.get('/users/ThomasDixini')
         const { avatar_url, bio, html_url, followers, login, name, company  } = await response.data;
 
         setUser({
