@@ -70,8 +70,10 @@ export function Repositorie(){
                         <a href="#"> <ChatCircle size={24} weight="fill"/> {post.comments} comentários</a>
                     </footer>
                 </IssueSection>
-                <ContentSection>
-                        <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]}/>
+                <ContentSection className='content'>
+                        <p>
+                            {post.body}
+                        </p>
                 </ContentSection>  
             </MainContainer>
         </>

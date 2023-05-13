@@ -15,7 +15,7 @@ background-color: ${props => props.theme['base-profile']};
 border-radius: 6px;
 padding: 2rem;
 box-shadow: 0px 2px 28px rgba(0,0,0,0.2);
-
+margin: 0 auto;
 a {
     text-decoration: none;
     display: flex;
@@ -46,11 +46,31 @@ footer {
     display: flex;
     gap: 1.5rem;
     }
+
+@media(max-width: 1200px){
+    max-width: 800px ;
+}
+@media(max-width: 800px){
+    max-width: 600px ;
+}
+@media(max-width: 600px){
+    max-width: 350px;
+    &:first-child {
+        footer {
+            margin-top: 2rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+        }
+    }
+}
 `
 
 export const ContentSection = styled.section`
+width: 100%;
 color: ${props => props.theme['base-text']};
 line-height: 1.6;
 margin-top: 2rem;
+
 `
 
