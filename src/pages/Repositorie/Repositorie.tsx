@@ -34,7 +34,7 @@ export function Repositorie(){
 
     useEffect(() => {
         loadIssuePost()
-    }, [])
+    }, [post])
 
     return (
         <>
