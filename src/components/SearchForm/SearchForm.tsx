@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { FormContainer } from "./styles";
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
+import { Issue } from "../../pages/Profile/Profile";
 
 const SearchFormSchema = z.object({
     query: z.string()
@@ -10,10 +11,11 @@ const SearchFormSchema = z.object({
 type SearchIssueType = z.infer<typeof SearchFormSchema>
 
 interface SearchFormProps {
-    loadIssues: (query?: string) => Promise<void>
+    loadIssues: (query?: string) => Promise<void>;
+    issuesLength?: number;
 }
 
-export function SearchForm({loadIssues}: SearchFormProps){
+export function SearchForm({loadIssues, issuesLength}: SearchFormProps){
     
     const { register, handleSubmit } = useForm<SearchIssueType>({
         resolver: zodResolver(SearchFormSchema),
@@ -26,11 +28,13 @@ export function SearchForm({loadIssues}: SearchFormProps){
         loadIssues(data.query)
     }
 
+    console.log(issuesLength)
+
     return(
         <FormContainer action="" onSubmit={handleSubmit(handleSearchIssues)}>
             <div>
                 <label htmlFor="searchForm"> Publicações </label>
-                <span> 6 publicações </span>
+                <span> {issuesLength} publicações </span>
             </div>
             <input 
                 type="text" 

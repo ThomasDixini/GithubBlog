@@ -25,7 +25,6 @@ export function Profile(){
             }
         })
         const data =  await response.data
-         
         setIssues(data.items)
     }
 
@@ -33,11 +32,13 @@ export function Profile(){
         loadIssues()
     },[issues])
 
+    console.log(issues.length)
+
     return(
         <>
             <MainContainer>
                 <UserSummary />
-                <SearchForm loadIssues={loadIssues}/>
+                <SearchForm loadIssues={loadIssues} issuesLength={issues.length}/>
                 <section className="repositorySection">
                     {issues.map(issue => {
                         console.log(issue)

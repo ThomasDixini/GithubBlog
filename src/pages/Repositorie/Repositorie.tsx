@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { ContentSection, IssueSection, MainContainer } from './styles';
 import { ArrowLeft, ArrowSquareOut, Calendar, ChatCircle, GithubLogo } from 'phosphor-react';
 import { api } from '../../api/api';
-import { dateFormatter } from '../../utils/formatter';
 import { formatDistance } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
@@ -13,6 +12,7 @@ interface Post {
     body: string;
     comments: number;
     created_at: string;
+    html_url: string;
 }
 
 export function Repositorie(){
@@ -21,17 +21,16 @@ export function Repositorie(){
     
     async function loadIssuePost() {
         const response = await api.get(`repos/ThomasDixini/GithubBlog/issues/${repo}`)
-        const { title, body, comments, created_at, user} = await response.data
+        const { title, body, comments, created_at, user, html_url} = await response.data
         const login = user.login
 
-        console.log(created_at)
-        console.log()
         const postDatas = {
             title, 
             body, 
             comments, 
             created_at, 
-            login
+            login,
+            html_url
         }
 
         setPost(postDatas)
@@ -52,7 +51,7 @@ export function Repositorie(){
                             <ArrowLeft size={20}/>
                              Voltar 
                         </a>
-                        <a href="#"> 
+                        <a href={post.html_url} target="_blank"> 
                             VER NO GITHUB 
                             <ArrowSquareOut size={20}/>
                         </a>
