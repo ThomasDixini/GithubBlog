@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react'
  
 
 export interface Issue {
-    id: number
+    id: number;
+    number: number;
     title: string;
     body: string;
     created_at: string;
@@ -30,7 +31,7 @@ export function Profile(){
 
     useEffect(() => {
         loadIssues()
-    },[])
+    },[issues])
 
     return(
         <>

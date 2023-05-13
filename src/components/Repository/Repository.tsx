@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Issue } from "../../pages/Profile/Profile";
 import { ArticleContainer } from "./styled";
 
@@ -6,8 +7,11 @@ interface RepositoryProps {
 }
 
 export function Repository({issue}: RepositoryProps){
+
+    const navigate = useNavigate()
+
     return(
-        <ArticleContainer>
+        <ArticleContainer onClick={() => navigate(`/repositorie/${issue.number}`)}>
             <header>
                 <strong> {issue.title} </strong>
                 <span> {issue.created_at} </span>
