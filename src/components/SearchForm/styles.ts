@@ -17,6 +17,7 @@ div {
 input {
     width: 100%;
     background-color: ${props => props.theme['base-input']};
+    color: ${props => props.theme['white']};
     border: 0;
     border: 1px solid ${props => props.theme['base-border']};
     border-radius: 6px;

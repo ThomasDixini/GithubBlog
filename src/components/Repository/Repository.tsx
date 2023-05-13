@@ -1,17 +1,20 @@
+import { Issue } from "../../pages/Profile/Profile";
 import { ArticleContainer } from "./styled";
 
-export function Repository(){
+interface RepositoryProps {
+    issue: Issue
+}
+
+export function Repository({issue}: RepositoryProps){
     return(
         <ArticleContainer>
             <header>
-                <strong> JavaScript data types and data structures </strong>
-                <span> Há 1 dia </span>
+                <strong> {issue.title} </strong>
+                <span> {issue.created_at} </span>
             </header>
             <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, possimus nisi. Sequi, 
-                laudantium cum ex adipisci sed quod voluptatibus repudiandae quasi deleniti aliquid 
-                laborum dolore, molestiae nobis! Impedit, laboriosam quis?
+                {issue.body}
             </p>
         </ArticleContainer>
     );
-}
+} 
