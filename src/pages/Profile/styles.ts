@@ -6,6 +6,7 @@ max-width: 1200px;
 width: 100%;
 margin: 0 auto;
 margin-top: -5rem;
+margin-bottom: 5rem;
 
 .repositorySection {
     margin-top: 3rem;

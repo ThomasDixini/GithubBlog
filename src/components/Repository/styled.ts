@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ArticleContainer = styled.article`
 
+max-height: 16.25rem;
 background-color: ${props => props.theme['base-post']};
 padding: 2rem;
 position: relative;
@@ -31,6 +32,7 @@ header {
     }
 }
 p {
+    
     color: ${props => props.theme['base-text']};
     margin-top: 1rem;
     font-size:  87.5%;
