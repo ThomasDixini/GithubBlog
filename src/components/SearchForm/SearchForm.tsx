@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { FormContainer } from "./styles";
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { Issue } from "../../pages/Profile/Profile";
 
 const SearchFormSchema = z.object({
     query: z.string()
