@@ -20,15 +20,16 @@ cursor: pointer;
 
 header {
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
 
     strong {
-        color: ${props => props.theme['base-title']}
+        color: ${props => props.theme['base-title']};
+        
     }
     span {
         font-size: 81%;
-        width: 60px;
-        ${props => props.theme['base-span']}
+        ${props => props.theme['base-span']};
+        white-space: nowrap;
     }
 }
 p {

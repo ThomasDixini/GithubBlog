@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react'
  
 
 export interface Issue {
-    id: number
+    id: number;
+    number: number;
     title: string;
     body: string;
     created_at: string;
@@ -24,19 +25,20 @@ export function Profile(){
             }
         })
         const data =  await response.data
-         
         setIssues(data.items)
     }
 
     useEffect(() => {
         loadIssues()
-    },[])
+    },[issues])
+
+    console.log(issues.length)
 
     return(
         <>
             <MainContainer>
                 <UserSummary />
-                <SearchForm loadIssues={loadIssues}/>
+                <SearchForm loadIssues={loadIssues} issuesLength={issues.length}/>
                 <section className="repositorySection">
                     {issues.map(issue => {
                         console.log(issue)

@@ -52,4 +52,9 @@ gap: 2rem;
                 margin-top: 1rem;
             }
     }
+
+@media(max-width: 600px){
+    flex-direction: column;
+    align-items: center;
+}
 `

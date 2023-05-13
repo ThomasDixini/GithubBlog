@@ -1,9 +1,47 @@
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { ContentSection, IssueSection, MainContainer } from './styles';
 import { ArrowLeft, ArrowSquareOut, Calendar, ChatCircle, GithubLogo } from 'phosphor-react';
+import { api } from '../../api/api';
+import { formatDistance } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
+interface Post {
+    title: string;
+    login: string;
+    body: string;
+    comments: number;
+    created_at: string;
+    html_url: string;
+}
 
 export function Repositorie(){
     const { repo } = useParams()
+    const [post, setPost] = useState<Post>({} as Post)
+    
+    async function loadIssuePost() {
+        const response = await api.get(`repos/ThomasDixini/GithubBlog/issues/${repo}`)
+        const { title, body, comments, created_at, user, html_url} = await response.data
+        const login = user.login
+
+        const postDatas = {
+            title, 
+            body, 
+            comments, 
+            created_at, 
+            login,
+            html_url
+        }
+
+        setPost(postDatas)
+    }
+
+    useEffect(() => {
+        loadIssuePost()
+    }, [])
+
+    
+
     return (
         <>
             <MainContainer>
@@ -13,30 +51,27 @@ export function Repositorie(){
                             <ArrowLeft size={20}/>
                              Voltar 
                         </a>
-                        <a href="#"> 
+                        <a href={post.html_url} target="_blank"> 
                             VER NO GITHUB 
                             <ArrowSquareOut size={20}/>
                         </a>
                     </header>
-                    <strong> JavaScript data types and data structures </strong>
+                    <strong> {post.title} </strong>
                     <footer>
-                        <a href="#"> <GithubLogo size={24}/> thomasdixini </a>
-                        <a href="#"> <Calendar size={24}/> Há 1 dia</a>
-                        <a href="#"> <ChatCircle size={24} weight="fill"/> 5 comentários</a>
+                        <a href="#"> <GithubLogo size={24}/> {post.login} </a>
+                        <a href="#"> <Calendar size={24}/> {
+                            post.created_at && formatDistance(new Date(post.created_at),new Date(), {
+                                addSuffix: true,
+                                locale: ptBR
+                            })
+                        } </a>
+                        <a href="#"> <ChatCircle size={24} weight="fill"/> {post.comments} comentários</a>
                     </footer>
                 </IssueSection>
                 <ContentSection>
-                    <dl>
-                        <dt> Dynamic Js </dt>
-                        <dd> Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Quo officiis rerum aliquid iste ex dolores veritatis a
-                            lias quod nihil repellat quaerat quia, minus consectetur! 
-                            Numquam saepe quaerat ipsum quam modi!
-                        </dd>
-                    </dl>
-                    <pre>
-                        asfas
-                    </pre>
+                    <p>
+                        {post.body}
+                    </p>
                 </ContentSection>  
             </MainContainer>
         </>

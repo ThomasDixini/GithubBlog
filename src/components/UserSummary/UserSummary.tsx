@@ -42,14 +42,14 @@ export function UserSummary(){
             <div>
                 <span>
                     <h1>{user.name}</h1>
-                    <a href={user.html_url}> 
+                    <a href={user.html_url} target="_blank"> 
                         Github 
                         <ArrowSquareOut size={20} color="#3294f8" weight="bold"/>
                     </a>
                 </span>
                 <p> {user.bio} </p>
                 <footer>
-                    <a href={user.html_url}>
+                    <a href={user.html_url} >
                         <GithubLogo size={24}/>
                         {user.login}
                     </a>
