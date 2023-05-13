@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import { ContentSection, IssueSection, MainContainer } from './styles';
 import { ArrowLeft, ArrowSquareOut, Calendar, ChatCircle, GithubLogo } from 'phosphor-react';
 import { api } from '../../api/api';
+import { dateFormatter } from '../../utils/formatter';
+import { formatDistance } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 interface Post {
     title: string;
@@ -21,6 +24,8 @@ export function Repositorie(){
         const { title, body, comments, created_at, user} = await response.data
         const login = user.login
 
+        console.log(created_at)
+        console.log()
         const postDatas = {
             title, 
             body, 
@@ -34,7 +39,9 @@ export function Repositorie(){
 
     useEffect(() => {
         loadIssuePost()
-    }, [post])
+    }, [])
+
+    
 
     return (
         <>
@@ -53,7 +60,12 @@ export function Repositorie(){
                     <strong> {post.title} </strong>
                     <footer>
                         <a href="#"> <GithubLogo size={24}/> {post.login} </a>
-                        <a href="#"> <Calendar size={24}/> {post.created_at} </a>
+                        <a href="#"> <Calendar size={24}/> {
+                            post.created_at && formatDistance(new Date(post.created_at),new Date(), {
+                                addSuffix: true,
+                                locale: ptBR
+                            })
+                        } </a>
                         <a href="#"> <ChatCircle size={24} weight="fill"/> {post.comments} comentários</a>
                     </footer>
                 </IssueSection>
