@@ -9,7 +9,11 @@ const SearchFormSchema = z.object({
 
 type SearchIssueType = z.infer<typeof SearchFormSchema>
 
-export function SearchForm(){
+interface SearchFormProps {
+    loadIssues: (query?: string) => Promise<void>
+}
+
+export function SearchForm({loadIssues}: SearchFormProps){
     
     const { register, handleSubmit } = useForm<SearchIssueType>({
         resolver: zodResolver(SearchFormSchema),
@@ -18,8 +22,8 @@ export function SearchForm(){
         }
     });
 
-    function handleSearchIssues(){
-
+    function handleSearchIssues(data: SearchIssueType){
+        loadIssues(data.query)
     }
 
     return(

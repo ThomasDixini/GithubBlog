@@ -11,7 +11,7 @@ margin-bottom: 5rem;
 .repositorySection {
     margin-top: 3rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px,350px));
     gap: 2rem;
 }
 `

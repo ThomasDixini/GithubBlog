@@ -17,10 +17,10 @@ export function Profile(){
 
     const [issues, setIssues] = useState<Issue[]>([])
 
-    async function  loadIssues(query?: string) {
+    async function  loadIssues(query = '') {
         const response = await api.get('/search/issues', {
             params: {
-                q: `repo:ThomasDixini/GithubBlog`
+                q: `${query}repo:ThomasDixini/GithubBlog`
             }
         })
         const data =  await response.data
@@ -36,7 +36,7 @@ export function Profile(){
         <>
             <MainContainer>
                 <UserSummary />
-                <SearchForm />
+                <SearchForm loadIssues={loadIssues}/>
                 <section className="repositorySection">
                     {issues.map(issue => {
                         console.log(issue)
