@@ -27,8 +27,6 @@ export function SearchForm({loadIssues, issuesLength}: SearchFormProps){
         loadIssues(data.query)
     }
 
-    console.log(issuesLength)
-
     return(
         <FormContainer action="" onSubmit={handleSubmit(handleSearchIssues)}>
             <div>

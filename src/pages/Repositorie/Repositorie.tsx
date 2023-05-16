@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm';
 import { ContentSection, IssueSection, MainContainer } from './styles';
 import { ArrowLeft, ArrowSquareOut, Calendar, ChatCircle, GithubLogo } from 'phosphor-react';
 import { api } from '../../api/api';
@@ -25,7 +23,7 @@ export function Repositorie(){
         const response = await api.get(`repos/ThomasDixini/GithubBlog/issues/${repo}`)
         const { title, body, comments, created_at, user, html_url} = await response.data
         const login = user.login
-        console.log(response.data)
+
         const postDatas = {
             title, 
             body, 
@@ -41,8 +39,6 @@ export function Repositorie(){
     useEffect(() => {
         loadIssuePost()
     }, [])
-
-    const markdown = post.body
 
     return (
         <>
