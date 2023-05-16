@@ -30,7 +30,7 @@ export function Profile(){
 
     useEffect(() => {
         loadIssues()
-    },[issues])
+    },[])
 
     console.log(issues.length)
 

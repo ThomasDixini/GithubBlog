@@ -8,7 +8,6 @@ padding: 2rem;
 position: relative;
 border-radius: 8px;
 transition: transform 0.3s;
-overflow: hidden;
 transform: scale(1);
 border: 2px solid transparent;
 cursor: pointer;
@@ -37,6 +36,11 @@ p {
     color: ${props => props.theme['base-text']};
     margin-top: 1rem;
     font-size:  87.5%;
+    display: -webkit-box;
+    -webkit-line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 `

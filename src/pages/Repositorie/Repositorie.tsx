@@ -40,8 +40,6 @@ export function Repositorie(){
         loadIssuePost()
     }, [])
 
-    
-
     return (
         <>
             <MainContainer>
@@ -68,10 +66,10 @@ export function Repositorie(){
                         <a href="#"> <ChatCircle size={24} weight="fill"/> {post.comments} comentários</a>
                     </footer>
                 </IssueSection>
-                <ContentSection>
-                    <p>
-                        {post.body}
-                    </p>
+                <ContentSection className='content'>
+                        <p>
+                            {post.body}
+                        </p>
                 </ContentSection>  
             </MainContainer>
         </>

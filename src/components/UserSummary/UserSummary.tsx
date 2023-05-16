@@ -1,7 +1,7 @@
 import { GithubLogo, Buildings, Users, ArrowSquareOut } from "phosphor-react";
 import { SectionContainer } from "./styles";
 import { api } from "../../api/api";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 interface UserDataType {
     avatar_url: string;
@@ -13,7 +13,7 @@ interface UserDataType {
     company: string;
 }
 
-export function UserSummary(){
+function UserSummaryComponent(){
 
     const [ user, setUser ] = useState<UserDataType>({} as UserDataType);
 
@@ -68,3 +68,5 @@ export function UserSummary(){
         </SectionContainer>
     );
 }
+
+export const UserSummary = memo(UserSummaryComponent);
